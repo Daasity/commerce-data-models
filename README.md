@@ -72,7 +72,7 @@ Purpose: Enables you to lookup an email address across all integrations to ident
 Table Name: `uos.customer_email_lkp`
 Table Type: Householding
 <table>
-<thead><th>Column</th><th>Description</th></thead>
+<thead><th width="30%">Column</th><th>Description</th></thead>
 <tr><td>EMAIL</td><td>Email address</td></tr>
 <tr><td>FIRST_NAME</td><td>First Name</td></tr>
 <tr><td>LAST_NAME</td><td>Last Name</td></tr>
@@ -86,7 +86,7 @@ Purpose: Enables you to see the results of customer house-holding by being able 
 Table Name: uos.customer_hshld_lkp
 Table Type: Householding
 <table>
-<thead><th>Column</th><th>Description</th></thead>
+<thead><th width="30%">Column</th><th>Description</th></thead>
 <tr><td>CUSTOMER_ID</td><td>Customer ID from the Customer and Order tables enabling a householded individual to reference back to the customer in a souce system</td></tr>
 <tr><td>UNIQUE_CUSTOMER_ID</td><td>Daasity generated unique customer id representing a householded individual</td></tr>
 </table>
@@ -96,7 +96,7 @@ Purpose: Enables you to lookup a phone number across all integrations to identif
 Table Name: uos.customer_phone_lkp
 Table Type: Householding
 <table>
-<thead><th>Column</th><th>Description</th></thead>
+<thead><th width="30%">Column</th><th>Description</th></thead>
 <tr><td>EMAIL</td><td>Email address</td></tr>
 <tr><td>FIRST_NAME</td><td>First Name</td></tr>
 <tr><td>LAST_NAME</td><td>Last Name</td></tr>
@@ -110,7 +110,7 @@ Purpose: Enables you to capture the most recent customer information from the so
 Table Name: uos.customers
 Table Type: Core
 <table>
-<thead><th>Column</th><th>Description</th></thead>
+<thead><th width="30%">Column</th><th>Description</th></thead>
 <tr><td>ADDRESS1</td><td>Address line 1</td></tr>
 <tr><td>ADDRESS2</td><td>Address line 2</td></tr>
 <tr><td>CITY</td><td>City</td></tr>
@@ -142,7 +142,7 @@ Purpose: Enables you to support retail and other sales channels where tracking a
 Table Name: uos.employees
 Table Type: Core
 <table>
-<thead><th>Column</th><th>Description</th></thead>
+<thead><th width="30%">Column</th><th>Description</th></thead>
 <tr><td>EMPLOYEE_ID</td><td>Unique Daasity identifier for the employee - comprised of the source system and the employee id from the source system</td></tr>
 <tr><td>FIRST_NAME</td><td>First Name</td></tr>
 <tr><td>LAST_NAME</td><td>Last Name</td></tr>
@@ -154,7 +154,7 @@ Purpose: Enables you to support split-shipment and multiple recipients within a 
 Table Name: uos.fulfillments
 Table Type: Core
 <table>
-<thead><th>Column</th><th>Description</th></thead>
+<thead><th width="30%">Column</th><th>Description</th></thead>
 <tr><td>CONVERTED_CURRENCY</td><td>The currency of the amounts for this record</td></tr>
 <tr><td>CREATED_AT</td><td>Date the fulfillment was created</td></tr>
 <tr><td>CURRENCY_CONVERSION_RATE</td><td>Conversion rate used for the currency conversion for this record</td></tr>
@@ -197,7 +197,7 @@ Purpose: Enables you to track inventory at the SKU, day and location level and c
 Table Name: uos.inventory_levels
 Table Type: Core
 <table>
-<thead><th>Column</th><th>Description</th></thead>
+<thead><th width="30%">Column</th><th>Description</th></thead>
 <tr><td>AVAILABLE_QUANTITY</td><td>Inventory that is available</td></tr>
 <tr><td>BACK_ORDER_QUANTITY</td><td>Inventory that is back-ordered to fulfill current orders</td></tr>
 <tr><td>COMMITTED_QUANTITY</td><td>Inventory that is committed to orders and unavailable for fulfillment</td></tr>
@@ -220,7 +220,7 @@ Purpose: Enables you to support retail because you order needs to be assigned to
 Table Name: uos.locations
 Table Type: Core
 <table>
-<thead><th>Column</th><th>Description</th></thead>
+<thead><th width="30%">Column</th><th>Description</th></thead>
 <tr><td>ADDRESS1</td><td>Address line 1</td></tr>
 <tr><td>ADDRESS2</td><td>Address line 2</td></tr>
 <tr><td>CITY</td><td>City</td></tr>
@@ -241,7 +241,7 @@ Purpose: Enables you to support systems that allow for stackable discounts - ord
 Table Name: uos.order_discount_codes
 Table Type: Secondary
 <table>
-<thead><th>Column</th><th>Description</th></thead>
+<thead><th width="30%">Column</th><th>Description</th></thead>
 <tr><td>CONVERTED_CURRENCY</td><td>The currency of the amounts for this record</td></tr>
 <tr><td>CURRENCY_CONVERSION_RATE</td><td>Conversion rate used for the currency conversion for this record</td></tr>
 <tr><td>DISCOUNT_AMOUNT</td><td>Amount of the discount applied</td></tr>
@@ -257,7 +257,7 @@ Purpose: Enables you to see the results of customer house-holding by being able 
 Table Name: uos.order_hshld_lkp
 Table Type: Householding
 <table>
-<thead><th>Column</th><th>Description</th></thead>
+<thead><th width="30%">Column</th><th>Description</th></thead>
 <tr><td>CUSTOMER_ID</td><td>Daasity ID for the customer from the source system</td></tr>
 <tr><td>ORDER_CODE</td><td>Customer facing code for the order</td></tr>
 <tr><td>ORDER_DATE</td><td>Date of the order was placed</td></tr>
@@ -270,7 +270,7 @@ Purpose: Enables an item in an order to be linked to a fulfillment.  Can be used
 Table Name: uos.order_item_fulfillments
 Table Type: Core
 <table>
-<thead><th>Column</th><th>Description</th></thead>
+<thead><th width="30%">Column</th><th>Description</th></thead>
 <tr><td>FULFILLMENT_ID</td><td>Daasity ID for the fulfillment - usually comprised of the source system and fulfillment id but for some commerce system must be generated/td></tr>
 <tr><td>ITEM_FULFILLMENT_STATUS</td><td>Status of the fulfillment for the item - usually Fulfilled or Unfulfilled</td></tr>
 <tr><td>ORDER_ITEM_FULFILLMENT_ID</td><td>Daasity ID to identify the item to be fulfilled - usually the source system and source order item fulfillment id if it exists</td></tr>
@@ -287,7 +287,7 @@ Purpose: Enables you to capture the items that are sold across multiple sales ch
 Table Name: uos.order_line_items
 Table Type: Core
 <table>
-<thead><th>Column</th><th>Description</th></thead>
+<thead><th width="30%">Column</th><th>Description</th></thead>
 <tr><td>CONVERTED_CURRENCY</td><td>The currency of the amounts for this record</td></tr>
 <tr><td>CURRENCY_CONVERSION_RATE</td><td>Conversion rate used for the currency conversion for this record</td></tr>
 <tr><td>DISCOUNT_AMOUNT</td><td>Amount of the discount applied at the item level</td></tr>
@@ -318,7 +318,7 @@ Purpose: Enables you to support multiple payment methods for an order and split 
 Table Name: uos.order_payments
 Table Type: Secondary
 <table>
-<thead><th>Column</th><th>Description</th></thead>
+<thead><th width="30%">Column</th><th>Description</th></thead>
 <tr><td>ORDER_ID</td><td>ID used to relate the payment to the Order</td></tr>
 <tr><td>PAYMENT_GATEWAY_NAME</td><td>Name of the payment method</td></tr>
 <tr><td>PAYMENT_ID</td><td>Primary key for the order payment method
@@ -330,7 +330,7 @@ Purpose: Enables you to support multiple shipping services for an order
 Table Name: uos.order_shipping_service
 Table Type: Secondary
 <table>
-<thead><th>Column</th><th>Description</th></thead>
+<thead><th width="30%">Column</th><th>Description</th></thead>
 <tr><td>CARRIER_IDENTIFIER</td><td>The carrier code for the shipping method</td></tr>
 <tr><td>ORDER_ID</td><td>ID used to relate the shipping service to the Order</td></tr>
 <tr><td>ORDER_SHIPPING_LINE_ID</td><td></td></tr>
@@ -345,7 +345,7 @@ Purpose: Enables you to normalize orders from multiple systems and has key field
 Table Name: uos.orders
 Table Type: Core
 <table>
-<thead><th>Column</th><th>Description</th></thead>
+<thead><th width="30%">Column</th><th>Description</th></thead>
 <tr><td>AMOUNT_CHARGED</td><td>The total amount the customer was charged</td></tr>
 <tr><td>BILLING_ADDRESS1</td><td>Address line 1</td></tr>
 <tr><td>BILLING_ADDRESS2</td><td>Address line 2</td></tr>
@@ -409,7 +409,7 @@ Purpose: Enables you to separately track what your customer actually buys and wa
 Table Name: uos.product_variants
 Table Type: Core
 <table>
-<thead><th>Column</th><th>Description</th></thead>
+<thead><th width="30%">Column</th><th>Description</th></thead>
 <tr><td>BARCODE</td><td>Alphanumeric version of barcode</td></tr>
 <tr><td>CONVERTED_CURRENCY</td><td>The currency of the amounts for this record</td></tr>
 <tr><td>COUNTRY_OF_ORIGIN</td><td>Country where the item originated or manufactured</td></tr>
@@ -439,7 +439,7 @@ Purpose: Enables you to include a parent for each product variant which is impor
 Table Name: uos.products
 Table Type: Secondary
 <table>
-<thead><th>Column</th><th>Description</th></thead>
+<thead><th width="30%">Column</th><th>Description</th></thead>
 <tr><td>CREATED_AT</td><td>Date the product was created</td></tr>
 <tr><td>PRODUCT_ID</td><td>Daasity ID for the product - usually the source system and the ID of the product in the source system</td></tr>
 <tr><td>PRODUCT_NAME</td><td>Current name of the product</td></tr>
@@ -457,7 +457,7 @@ Purpose: Enables you to track the items that were refunded and has a quantity fi
 Table Name: uos.refund_line_items
 Table Type: Secondary
 <table>
-<thead><th>Column</th><th>Description</th></thead>
+<thead><th width="30%">Column</th><th>Description</th></thead>
 <tr><td>CREATED_AT</td><td>Date the item refund was created</td></tr>
 <tr><td>ORDER_ID</td><td>ID used to relate the item refund to the order</td></tr>
 <tr><td>ORDER_LINE_ID</td><td>ID used to relate the item refund to the order item</td></tr>
@@ -474,7 +474,7 @@ Purpose: Enables you to track each individual refund even when there are multipl
 Table Name: uos.refunds
 Table Type: Secondary
 <table>
-<thead><th>Column</th><th>Description</th></thead>
+<thead><th width="30%">Column</th><th>Description</th></thead>
 <tr><td>CONVERTED_CURRENCY</td><td>The currency of the amounts for this record</td></tr>
 <tr><td>CREATED_AT</td><td>Date the refund was created</td></tr>
 <tr><td>CURRENCY_CONVERSION_RATE</td><td>Conversion rate used for the currency conversion for this record</td></tr>
@@ -495,7 +495,7 @@ The Daasity code replicates the logic in the Shopify Sales Report for all the fi
 Table Name: uos.sales_report
 Table Type: Secondary
 <table>
-<thead><th>Column</th><th>Description</th></thead>
+<thead><th width="30%">Column</th><th>Description</th></thead>
 <tr><td>BUSINESS_CHANNEL</td><td>Channel (D2C, Wholesale, etc.) for the Order</td></tr>
 <tr><td>BUSINESS_UNIT</td><td>Business Unit for the Order</td></tr>
 <tr><td>CONVERTED_CURRENCY</td><td>The currency of the amounts for this record</td></tr>
@@ -543,7 +543,7 @@ Purpose: Enables you to track each transaction associated with an order
 Table Name: uos.transactions
 Table Type: Secondary
 <table>
-<thead><th>Column</th><th>Description</th></thead>
+<thead><th width="30%">Column</th><th>Description</th></thead>
 <tr><td>AVS_RESULT_CODE</td><td>Result code from Address Verification (AVS) in credit card processing</td></tr>
 <tr><td>CONVERTED_CURRENCY</td><td>The currency of the amounts for this record</td></tr>
 <tr><td>CREATED_AT</td><td>Date the transaction was created</td></tr>
@@ -569,7 +569,7 @@ Purpose: Enables you to keep most recent customer information based on the resul
 Table Name: uos.unique_customers
 Table Type: Householding
 <table>
-<thead><th>Column</th><th>Description</th></thead>
+<thead><th width="30%">Column</th><th>Description</th></thead>
 <tr><td>ADDRESS1</td><td>Most recent address for the householded customer</td></tr>
 <tr><td>ADDRESS2</td><td>Most recent address for the householded customer</td></tr>
 <tr><td>CITY</td><td>Most recent city for the householded customer</td></tr>
