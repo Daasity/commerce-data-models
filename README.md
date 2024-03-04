@@ -49,11 +49,11 @@ View the ERD(https://lucid.app/documents/embedded/c8da9f0c-8b3a-417c-b126-f1693f
   * [Unique Customers](#unique-customers)[`uos.unique_customers`]
 
 >[!TIP]
-> Many of the tables contain the following fields which can be used to track the data flow from the source system to the integration schema within the database and then to UOS, our normalized order schema
+> Many of the tables contain the following fields which can be used to track the data flow from the source system to replication schema within the database and then to UOS, the normalized order schema
 >`__loaded_at`: defines when the record was last loaded into this table
->`__synced_at`: defines when the record was last replicated from the source system into the integration tables
->`__shop_id`: defines which integration the data was replicated from (this value is from the source itself)
->`__uos_integration_id`: the ID of the integration within the Daasity platform
+>`__synced_at`: defines when the record was last replicated from the source system
+>`__shop_id`: defines which extractor the data was replicated from (this value is often from the source itself)
+>`__uos_integration_id`: an ID that helps identify the specific extractor used to replicate data
 >`__uos_source`: the general source of the data (Shopify, Amazon, Magento, etc._)h
 
 >[!NOTE]
@@ -91,7 +91,7 @@ Table Type: **Householding**
 <table>
 <thead><th width="40%">Column</th><th>Description</th></thead>
 <tr><td width="40%">CUSTOMER_ID</td><td>Customer ID from the Customer and Order tables enabling a householded individual to reference back to the customer in a souce system</td></tr>
-<tr><td width="40%">UNIQUE_CUSTOMER_ID</td><td>Daasity generated unique customer id representing a householded individual</td></tr>
+<tr><td width="40%">UNIQUE_CUSTOMER_ID</td><td>A unique customer id representing a householded individual</td></tr>
 </table>
 
 
@@ -131,7 +131,7 @@ Table Type: **Core**
 <tr><td width="40%">COUNTRY_CODE</td><td>Two letter country code</td></tr>
 <tr><td width="40%">CREATED_AT</td><td>Date the customer was created in the source system</td></tr>
 <tr><td width="40%">CUSTOMER_ACCOUNT_STATUS</td><td>Status of the customer account that relate to the ability for a customer to access their account - usually values like active, pending, inactive</td></tr>
-<tr><td width="40%">CUSTOMER_ID</td><td>Non-householded unique Daasity identifier for the customer record - comprised of the source system and customer identifier from the source system</td></tr>
+<tr><td width="40%">CUSTOMER_ID</td><td>Non-householded unique identifier for the customer record - recommend using the source system and customer identifier from the source system</td></tr>
 <tr><td width="40%">CUSTOMER_NOTES</td><td>Notes from the source system for the customer</td></tr>
 <tr><td width="40%">CUSTOMER_TAGS</td><td>Tags from the source system for the customer</td></tr>
 <tr><td width="40%">DO_NOT_SHARE_FLAG</td><td>Flag indicating if the customer has requested to opt-out of data sharing such as marketing co-ops, etc.</td></tr>
@@ -158,7 +158,7 @@ Table Type: **Core**
 
 <table>
 <thead><th width="40%">Column</th><th>Description</th></thead>
-<tr><td width="40%">EMPLOYEE_ID</td><td>Unique Daasity identifier for the employee - comprised of the source system and the employee id from the source system</td></tr>
+<tr><td width="40%">EMPLOYEE_ID</td><td>Unique identifier for the employee - recomend the source system and the employee id from the source system</td></tr>
 <tr><td width="40%">FIRST_NAME</td><td>First Name</td></tr>
 <tr><td width="40%">LAST_NAME</td><td>Last Name</td></tr>
 <tr><td width="40%">STORE_EMPLOYEE_ID</td><td>Identifier for the employee in the source system</td></tr>
@@ -181,7 +181,7 @@ Table Type: **Core**
 <tr><td width="40%">ESTIMATED_ARRIVAL_DATE</td><td>Date the fulfillment (shipment) is expected to arrive</td></tr>
 <tr><td width="40%">FULLFILLMENT_COST</td><td>Cost to fulfill this shipment</td></tr>
 <tr><td width="40%">FULLFILLMENT_DATE</td><td>Date the shipment was fulfilled (ie. Picked and packed)</td></tr>
-<tr><td width="40%">FULLFILLMENT_ID</td><td>Daasity ID for the fulfillment - usually comprised of the source system and fulfillment id but for some commerce system must be generated</td></tr>
+<tr><td width="40%">FULLFILLMENT_ID</td><td>Unique ID for the fulfillment - recommend using the source system and fulfillment id but for some commerce system must be generated</td></tr>
 <tr><td width="40%">FULLFILLMENT_LOCATION</td><td>Location where the shipment was fulfilled</td></tr>
 <tr><td width="40%">FULLFILLMENT_LOCATION_ID</td><td>Location ID where the shipment was fulfilled</td></tr>
 <tr><td width="40%">FULLFILLMENT_STATUS</td><td>Status of the fulfillment - usually Fulfilled, Partially Fulfilled, Unfulfilled or sometimes Null</td></tr>
@@ -254,7 +254,7 @@ Table Type: **Core**
 <tr><td width="40%">COUNTRY</td><td>Country</td></tr>
 <tr><td width="40%">CREATED_AT</td><td>Date the location was created in the source system</td></tr>
 <tr><td width="40%">DELETED_AT</td><td>Date the location was removed from the source system</td></tr>
-<tr><td width="40%">LOCATION_ID</td><td>Daasity ID of the location (store or warehouse) in the source system - comprised of the source system and location id</td></tr>
+<tr><td width="40%">LOCATION_ID</td><td>Unique ID of the location (store or warehouse) in the source system - recommend using the source system and location id</td></tr>
 <tr><td width="40%">LOCATION_NAME</td><td>Name of the location (store or warehouse)</td></tr>
 <tr><td width="40%">PHONE_NUMBER</td><td>Phone Number</td></tr>
 <tr><td width="40%">STATE</td><td>State or Province</td></tr>
@@ -293,11 +293,11 @@ Table Type: **Householding**
 
 <table>
 <thead><th width="40%">Column</th><th>Description</th></thead>
-<tr><td width="40%">CUSTOMER_ID</td><td>Daasity ID for the customer from the source system</td></tr>
+<tr><td width="40%">CUSTOMER_ID</td><td>Unique ID for the customer from the source system</td></tr>
 <tr><td width="40%">ORDER_CODE</td><td>Customer facing code for the order</td></tr>
 <tr><td width="40%">ORDER_DATE</td><td>Date of the order was placed</td></tr>
 <tr><td width="40%">ORDER_ID</td><td>ID of the related Order</td></tr>
-<tr><td width="40%">UNIQUE_CUSTOMER_ID</td><td>Unique Daasity identifier for the householded customer</td></tr>
+<tr><td width="40%">UNIQUE_CUSTOMER_ID</td><td>Unique identifier for the householded customer</td></tr>
 </table>
 
 
@@ -310,9 +310,9 @@ Table Type: **Core**
 
 <table>
 <thead><th width="40%">Column</th><th>Description</th></thead>
-<tr><td width="40%">FULFILLMENT_ID</td><td>Daasity ID for the fulfillment - usually comprised of the source system and fulfillment id but for some commerce system must be generated/td></tr>
+<tr><td width="40%">FULFILLMENT_ID</td><td>Unique ID for the fulfillment - recommend using the source system and fulfillment id but for some commerce system must be generated/td></tr>
 <tr><td width="40%">ITEM_FULFILLMENT_STATUS</td><td>Status of the fulfillment for the item - usually Fulfilled or Unfulfilled</td></tr>
-<tr><td width="40%">ORDER_ITEM_FULFILLMENT_ID</td><td>Daasity ID to identify the item to be fulfilled - usually the source system and source order item fulfillment id if it exists</td></tr>
+<tr><td width="40%">ORDER_ITEM_FULFILLMENT_ID</td><td>Unique ID to identify the item to be fulfilled - recommend using the source system and source order item fulfillment id if it exists</td></tr>
 <tr><td width="40%">ORDER_LINE_ID</td><td>ID of the line item of the order the item fulfillment is related to</td></tr>
 <tr><td width="40%">ORDERED_QUANTITY</td><td>Number of units that were ordered</td></tr>
 <tr><td width="40%">REMAINING_TO_FULFILL</td><td>Number of units that remain to be fulfilled</td></tr>
@@ -337,7 +337,7 @@ Table Type: **Core**
 <tr><td width="40%">GIFT_CARD_FLAG</td><td>Flag to indicate if the item is a gift card</td></tr>
 <tr><td width="40%">LISTING_SKU</td><td>SKU that is used to list or sell the item</td></tr>
 <tr><td width="40%">ORDER_ID</td><td>ID used to relate the item to the order</td></tr>
-<tr><td width="40%">ORDER_LINE_ID</td><td>Primary key for the order line - usually the source system and the order line id from the integration schema</td></tr>
+<tr><td width="40%">ORDER_LINE_ID</td><td>Primary key for the order line - recommend using the source system and the order line id from the integration schema</td></tr>
 <tr><td width="40%">ORIGINAL_CURRENCY</td><td>The currency of the amounts in the integration schema</td></tr>
 <tr><td width="40%">PLATFORM_COMMISSION_FEES</td><td>Item level commission fees for order from the source system - i.e. Amazon Seller Fees at the item level</td></tr>
 <tr><td width="40%">PRICE</td><td>Item level price charged for the item</td></tr>
@@ -384,7 +384,7 @@ Table Type: **Secondary**
 <thead><th width="40%">Column</th><th>Description</th></thead>
 <tr><td width="40%">CARRIER_IDENTIFIER</td><td>The carrier code for the shipping method</td></tr>
 <tr><td width="40%">ORDER_ID</td><td>ID used to relate the shipping service to the Order</td></tr>
-<tr><td width="40%">ORDER_SHIPPING_LINE_ID</td><td></td></tr>
+<tr><td width="40%">ORDER_SHIPPING_LINE_ID</td><td>Unique id for the order shipping line</td></tr>
 <tr><td width="40%">SHIPPING_CODE</td><td>Code used in fulfillment for the shipping method</td></tr>
 <tr><td width="40%">SHIPPING_DISCOUNT</td><td>Discount applied to shipping</td></tr>
 <tr><td width="40%">SHIPPING_LINE_ID</td><td>Primary key for the order shipping service</td></tr>
@@ -427,7 +427,7 @@ Table Type: **Core**
 <tr><td width="40%">CONVERTED_CURRENCY</td><td>The currency of the amounts for this record</td></tr>
 <tr><td width="40%">CREATED_AT</td><td>Date the order was created</td></tr>
 <tr><td width="40%">CURRENCY_CONVERSION_RATE</td><td>Conversion rate used for the currency conversion for this record</td></tr>
-<tr><td width="40%">CUSTOMER_ID</td><td>Daasity ID for the customer</td></tr>
+<tr><td width="40%">CUSTOMER_ID</td><td>Unique ID for the customer</td></tr>
 <tr><td width="40%">CUSTOMER_LANGUAGE</td><td>Language the customer used to place the order</td></tr>
 <tr><td width="40%">EMAIL</td><td>Email address</td></tr>
 <tr><td width="40%">EMPLOYEE_ID</td><td>ID used to relate to the employee if an employee was used to place the order</td></tr>
@@ -437,7 +437,7 @@ Table Type: **Core**
 <tr><td width="40%">LOCATION_ID</td><td>ID of the location where the order was placed (if applicable)</td></tr>
 <tr><td width="40%">ORDER_CODE</td><td>Customer facing code for the order</td></tr>
 <tr><td width="40%">ORDER_DATE</td><td>Date the order was placed</td></tr>
-<tr><td width="40%">ORDER_ID</td><td>Daasity ID for the order - usually the sourcey system and the order id from the source system</td></tr>
+<tr><td width="40%">ORDER_ID</td><td>Unique ID for the order - recommend using the source system and the order id from the source system</td></tr>
 <tr><td width="40%">ORDER_NOTES</td><td>Notes placed on the order</td></tr>
 <tr><td width="40%">ORDER_SOURCE</td><td>Identifies how the order was generated (web, manual entry, POS, etc.)</td></tr>
 <tr><td width="40%">ORDER_TAGS</td><td>Tags on the order</td></tr>
@@ -486,7 +486,7 @@ Table Type: **Core**
 <tr><td width="40%">SKU_COST</td><td>Current cost of the SKU</td></tr>
 <tr><td width="40%">STORE_VARIANT_ID</td><td>Product variant id from the integration schema</td></tr>
 <tr><td width="40%">UPDATED_AT</td><td>Date the item was last updated in the source system</td></tr>
-<tr><td width="40%">VARIANT_ID</td><td>Daasity ID for the item - usually the source system and the product variant id</td></tr>
+<tr><td width="40%">VARIANT_ID</td><td>Unique ID for the item - recommend using the source system and the product variant id</td></tr>
 <tr><td width="40%">VARIANT_NAME</td><td>Current name of the item</td></tr>
 <tr><td width="40%">WEIGHT</td><td>Weight (numeric) of the item</td></tr>
 <tr><td width="40%">WEIGHT_UNIT</td><td>Units in which the weight is supplied</td></tr>
@@ -503,7 +503,7 @@ Table Type: **Secondary**
 <table>
 <thead><th width="40%">Column</th><th>Description</th></thead>
 <tr><td width="40%">CREATED_AT</td><td>Date the product was created</td></tr>
-<tr><td width="40%">PRODUCT_ID</td><td>Daasity ID for the product - usually the source system and the ID of the product in the source system</td></tr>
+<tr><td width="40%">PRODUCT_ID</td><td>Unique ID for the product - recommend using the source system and the ID of the product in the source system</td></tr>
 <tr><td width="40%">PRODUCT_NAME</td><td>Current name of the product</td></tr>
 <tr><td width="40%">PRODUCT_TAGS</td><td>Tags on the product</td></tr>
 <tr><td width="40%">PRODUCT_TYPE</td><td>Type of product</td></tr>
@@ -530,7 +530,7 @@ Table Type: **Secondary**
 <tr><td width="40%">QUANTITY</td><td>Number of units refunded</td></tr>
 <tr><td width="40%">REFUND_ID</td><td>ID used to relate the item refund to the refund</td></tr>
 <tr><td width="40%">REFUND_LINE_AMOUNT</td><td>Amount refunded</td></tr>
-<tr><td width="40%">REFUND_LINE_ITEM_ID</td><td>Daasity ID of the refund line item - usually the source system and the refund line item</td></tr>
+<tr><td width="40%">REFUND_LINE_ITEM_ID</td><td>Unique ID of the refund line item - recommend using the source system and the refund line item</td></tr>
 <tr><td width="40%">REFUND_LINE_TAX_AMOUNT</td><td>Tax amount refunded</td></tr>
 <tr><td width="40%">STORE_REFUND_LINE_ITEM_ID</td><td>ID of the refund line item from the source system</td></tr>
 </table>
@@ -553,7 +553,7 @@ Table Type: **Secondary**
 <tr><td width="40%">ORIGINAL_CURRENCY</td><td>The currency of the amounts in the integration schema</td></tr>
 <tr><td width="40%">REFUND_AMOUNT</td><td>Total amount of the refund</td></tr>
 <tr><td width="40%">REFUND_DATE</td><td>Date the refund was processed</td></tr>
-<tr><td width="40%">REFUND_ID</td><td>Daasity ID for the refund - usually the source system and id of the refund from the source system</td></tr>
+<tr><td width="40%">REFUND_ID</td><td>Unique ID for the refund - recommend using the source system and id of the refund from the source system</td></tr>
 <tr><td width="40%">REFUND_SHIPPING_AMOUNT</td><td>Shipping amount refunded</td></tr>
 <tr><td width="40%">REFUND_TAX_AMOUNT</td><td>Tax amount refunded</td></tr>
 <tr><td width="40%">STORE_REFUND_ID</td><td>ID of the refund from the source system</td></tr>
@@ -562,7 +562,6 @@ Table Type: **Secondary**
 
 ### Sales Report
 Purpose: Enables you to build a more financial / transaction based table to create data needs for an accounting team that performs analysis based on the date of the order.
-The Daasity code replicates the logic in the Shopify Sales Report for all the financial calculations and Transaction Type and Transaction Details
 
 Table Name: `uos.sales_report`
 
@@ -574,7 +573,7 @@ Table Type: **Secondary**
 <tr><td width="40%">BUSINESS_UNIT</td><td>Business Unit for the Order</td></tr>
 <tr><td width="40%">CONVERTED_CURRENCY</td><td>The currency of the amounts for this record</td></tr>
 <tr><td width="40%">CURRENCY_CONVERSION_RATE</td><td>Conversion rate used for the currency conversion for this record</td></tr>
-<tr><td width="40%">CUSTOMER_ID</td><td>Daasity ID for the customer</td></tr>
+<tr><td width="40%">CUSTOMER_ID</td><td>Unique ID for the customer</td></tr>
 <tr><td width="40%">DISCOUNT_AMOUNT</td><td>Total discount amount</td></tr>
 <tr><td width="40%">EMAIL_ADDRESS</td><td>Email address</td></tr>
 <tr><td width="40%">FULFILLMENT_AMOUNT</td><td>Total fulfillment amount</td></tr>
@@ -584,7 +583,7 @@ Table Type: **Secondary**
 <tr><td width="40%">NET_SALES</td><td>Total Net Sales (Gross - Refunds)</td></tr>
 <tr><td width="40%">ORDER_CODE</td><td>Customer facing code for the order</td></tr>
 <tr><td width="40%">ORDER_DATE</td><td>Date the order was placed</td></tr>
-<tr><td width="40%">ORDER_ID</td><td>Daasity ID for the order - usually the sourcey system and the order id from the source system</td></tr>
+<tr><td width="40%">ORDER_ID</td><td>Unique ID for the order - recommend using the source system and the order id from the source system</td></tr>
 <tr><td width="40%">ORDER_LINE_ID</td><td>Primary key for the order line - usually the source system and the order line id from the integration schema</td></tr>
 <tr><td width="40%">ORIGINAL_CURRENCY</td><td>The currency of the amounts in the integration schema</td></tr>
 <tr><td width="40%">PRICE</td><td>Price of the item</td></tr>
@@ -597,8 +596,8 @@ Table Type: **Secondary**
 <tr><td width="40%">SKU_COST</td><td>Cost of the SKU at the time the item was purchased</td></tr>
 <tr><td width="40%">STORE_COUNTRY</td><td>Country for the store (sales channel) where the order was placed</td></tr>
 <tr><td width="40%">STORE_CUSTOMER_ID</td><td>ID of the customer from the source system</td></tr>
-<tr><td width="40%">STORE_INTEGRATION_NAME</td><td>Name of the integration for the order from the Daasity system</td></tr>
-<tr><td width="40%">STORE_NAME</td><td>Name of the store from the Daasity system</td></tr>
+<tr><td width="40%">STORE_INTEGRATION_NAME</td><td>Name of the integration used to replicate the data from the source system</td></tr>
+<tr><td width="40%">STORE_NAME</td><td>Name of the store</td></tr>
 <tr><td width="40%">STORE_ORDER_ID</td><td>ID of the order from the source system</td></tr>
 <tr><td width="40%">STORE_ORDER_LINE_ID</td><td>ID of the order line from the source system</td></tr>
 <tr><td width="40%">STORE_PRODUCT_ID</td><td>ID of the product from the source system</td></tr>
@@ -636,7 +635,7 @@ Table Type: **Secondary**
 <tr><td width="40%">TRANSACTION_AUTHORIZATION</td><td>Authorization code for the transaction</td></tr>
 <tr><td width="40%">TRANSACTION_DATE</td><td>Date the transaction was processed</td></tr>
 <tr><td width="40%">TRANSACTION_GATEWAY</td><td>Gateway used to process the transaction</td></tr>
-<tr><td width="40%">TRANSACTION_ID</td><td>Daasity ID for the transaction - usually the source system and transaction id</td></tr>
+<tr><td width="40%">TRANSACTION_ID</td><td>Unique ID for the transaction - recommend using the source system and transaction id</td></tr>
 <tr><td width="40%">TRANSACTION_SOURCE</td><td>Application that was used to create the transaction (ex: web, app, mobile, etc.)</td></tr>
 <tr><td width="40%">TRANSACTION_STATUS</td><td>Status of the transaction (ex: success, failure, error)</td></tr>
 <tr><td width="40%">TRANSACTION_TYPE</td><td>Type of transaction (ex: authorization, sale, refund, etc.)</td></tr>
@@ -665,7 +664,7 @@ Table Type: **Householding**
 <tr><td width="40%">PHONE_NUMBER</td><td>Most recent phone number for the householded customer</td></tr>
 <tr><td width="40%">STATE</td><td>Most recent state (province) for the householded customer</td></tr>
 <tr><td width="40%">STATE_CODE</td><td>The two letter state code for the state</td></tr>
-<tr><td width="40%">UNIQUE_CUSTOMER_ID</td><td>Unique Daasity identifier for the householded customer</td></tr>
+<tr><td width="40%">UNIQUE_CUSTOMER_ID</td><td>Unique identifier for the householded customer</td></tr>
 <tr><td width="40%">UPDATED_AT</td><td>Date the unique customer was last householded</td></tr>
 <tr><td width="40%">ZIPCODE</td><td>Most recent zip (postal) code for the householded customer</td></tr>
 </table>
