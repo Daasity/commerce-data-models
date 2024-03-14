@@ -27,5 +27,5 @@ For any questions or suggestions feel free to reach out to our team at commerce-
 [Apache 1.0](https://github.com/Daasity/commerce-data-models?tab=Apache-2.0-1-ov-file)
 
 # Copyright
-© 2024 Daasity, Inc.,
+© 2024 Daasity, Inc.
 
