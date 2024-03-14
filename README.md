@@ -19,5 +19,11 @@ For product, Brands will use different naming conventions for their merchandisin
 
 Refer to the UOS documentation here: https://github.com/Daasity/commerce-data-models/wiki/Unified-Order-Schema-(UOS)
 
+
+# Questions / Support
+For any questions or suggestions feel free to reach out to our team at commerce-data-models@daasity.com
+
+
+# License
 © 2024 Daasity, Inc.
 
