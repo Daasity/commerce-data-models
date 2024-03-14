@@ -23,7 +23,9 @@ Refer to the UOS documentation here: https://github.com/Daasity/commerce-data-mo
 # Questions / Support
 For any questions or suggestions feel free to reach out to our team at commerce-data-models@daasity.com
 
-
 # License
-© 2024 Daasity, Inc.
+[Apache 1.0](https://github.com/Daasity/commerce-data-models?tab=Apache-2.0-1-ov-file)
+
+# Copyright
+© 2024 Daasity, Inc.,
 
